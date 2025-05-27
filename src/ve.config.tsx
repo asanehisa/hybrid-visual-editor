@@ -89,4 +89,5 @@ export const componentRegistry = new Map<string, Config<any>>([
   ["main", mainConfig],
   ["directory", directoryConfig],
   ["locator", locatorConfig],
+  ["repo", mainConfig],
 ]);
