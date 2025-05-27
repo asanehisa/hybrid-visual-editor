@@ -69,9 +69,9 @@ export const config: TemplateConfig = {
     localization: {
       locales: ["en"],
     },
-    transform: {
-      replaceOptionValuesWithDisplayNames: ["c_exampleOption"],
-    },
+    // transform: {
+    //   replaceOptionValuesWithDisplayNames: ["c_exampleOption"],
+    // },
   },
   additionalProperties: {
     isVETemplate: true,
