@@ -11,6 +11,7 @@ import {
   DirectoryCategoryProps,
   LocatorCategoryComponents,
   LocatorCategoryProps,
+  useDocument,
 } from "@yext/visual-editor";
 
 interface MainProps
@@ -89,9 +90,11 @@ interface MockProps {
   envVar?: string;
 }
 
-const MockHello  = (props: MockProps) => (
-  <>Hello world {props.envVar}</>
-)
+const MockHello  = (props: MockProps) => {
+  const document = useDocument<any>();
+  return (
+  <>Hello world {document?._env?.props.envVar}</>
+)}
 
 const Mock = (envVar?: string): ComponentConfig<MockProps> => (
 {
