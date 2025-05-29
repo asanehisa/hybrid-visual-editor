@@ -93,7 +93,7 @@ interface MockProps {
 const MockHello  = (props: MockProps) => {
   const document = useDocument<any>();
   return (
-  <>Hello world {document?._env?.props.envVar}</>
+  <>Hello world {props.envVar && document?._env?.[props?.envVar]}</>
 )}
 
 const Mock = (envVar?: string): ComponentConfig<MockProps> => (
