@@ -1,4 +1,4 @@
-import { ComponentConfig, DefaultComponentProps, DropZone, type Config } from "@measured/puck";
+import { DropZone, type Config } from "@measured/puck";
 import "@yext/visual-editor/style.css";
 import "./index.css";
 import {
@@ -11,7 +11,7 @@ import {
   DirectoryCategoryProps,
   LocatorCategoryComponents,
   LocatorCategoryProps,
-  NearbyLocationsSection
+  NearbyLocationsSection,
   NearbyLocationsSectionProps,
   withPropOverrides,
 } from "@yext/visual-editor";
