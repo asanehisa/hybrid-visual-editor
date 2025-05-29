@@ -1,4 +1,4 @@
-import { ComponentConfig, DropZone, type Config } from "@measured/puck";
+import { ComponentConfig, DefaultComponentProps, DropZone, type Config } from "@measured/puck";
 import "@yext/visual-editor/style.css";
 import "./index.css";
 import {
@@ -101,13 +101,19 @@ interface RepoProps {
   Mock: MockProps;
 }
 
+function withPropOverrides<P extends DefaultComponentProps>(
+  base: ComponentConfig<P>,
+  overrides: Partial<P>
+): ComponentConfig<P> {
+  return {
+    ...base,
+    render: (props) => base.render({ ...props, ...overrides }),
+  };
+}
+
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: {...Mock, 
-      render: (props) => {
-        props.apiKey = "apiKey";
-        return Mock.render(props)
-      }}
+    Mock: withPropOverrides(Mock, { apiKey: "my-api-key" })
   },
   root: {
     render: () => {
