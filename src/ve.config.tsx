@@ -11,7 +11,9 @@ import {
   DirectoryCategoryProps,
   LocatorCategoryComponents,
   LocatorCategoryProps,
-  useDocument,
+  NearbyLocationsSection
+  NearbyLocationsSectionProps,
+  withPropOverrides,
 } from "@yext/visual-editor";
 
 interface MainProps
@@ -86,45 +88,15 @@ export const locatorConfig: Config<LocatorConfigProps> = {
   },
 };
 
-interface MockProps {
-  envVar?: string;
-}
-
-const MockHello  = (props: MockProps) => {
-  const document = useDocument<any>();
-  return (
-  <>Hello world {props.envVar && document?._env?.[props?.envVar]}</>
-)}
-
-const Mock: ComponentConfig<MockProps> = 
-{
-  label: "Mock",    
-  render: (props) => (
-    <MockHello {...props} />
-  ),
-}
 
 interface RepoProps {
-  Mock: MockProps;
+  NearbyLocationsSection: NearbyLocationsSectionProps;
 }
 
-type ComponentPropOverrides = {
-  Mock: Pick<MockProps, "envVar">;
-};
-
-export function withPropOverrides<K extends keyof ComponentPropOverrides>(
-  base: ComponentConfig<any>,
-  overrides: ComponentPropOverrides[K]
-): ComponentConfig<any> {
-  return {
-    ...base,
-    render: (props) => base.render({ ...props, ...overrides }),
-  };
-}
 
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: withPropOverrides(Mock, {envVar: "YEXT_PUBLIC_TEST"})
+    NearbyLocationsSection: withPropOverrides(NearbyLocationsSection, {contentEndpointEnvVar: "YEXT_PUBLIC_TEST"})
   },
   root: {
     render: () => {
