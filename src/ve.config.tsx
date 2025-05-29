@@ -101,6 +101,15 @@ interface RepoProps {
   Mock: MockProps;
 }
 
+function injectMockApiKey(
+  apiKey: string
+): typeof Mock {
+  return {
+    ...Mock,
+    render: (props) => Mock.render({ ...props, apiKey: apiKey }),
+  };
+}
+
 function withPropOverrides<P extends DefaultComponentProps>(
   base: ComponentConfig<P>,
   overrides: Partial<P>
@@ -113,7 +122,7 @@ function withPropOverrides<P extends DefaultComponentProps>(
 
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: withPropOverrides(Mock, { apiKey: "my-api-key" })
+    Mock: injectMockApiKey("innjected-api")
   },
   root: {
     render: () => {
