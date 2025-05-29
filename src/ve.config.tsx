@@ -89,40 +89,25 @@ interface MockProps {
   apiKey: string;
 }
 
-const Mock: ComponentConfig<MockProps> =
+const MockHello  = (props: MockProps) => (
+  <>Hello world {props.apiKey}</>
+)
+
+const Mock = (apiKey: string): ComponentConfig<MockProps> => (
   {
     label: "Mock",    
     render: (props) => (
-      <>Mock Hello {props.apiKey}</>
+      <MockHello {...props} apiKey={apiKey} />
     ),
-  };
+  })
 
 interface RepoProps {
   Mock: MockProps;
 }
 
-function injectMockApiKey(
-  apiKey: string
-): typeof Mock {
-  return {
-    ...Mock,
-    render: (props) => Mock.render({ ...props, apiKey: apiKey }),
-  };
-}
-
-function withPropOverrides<P extends DefaultComponentProps>(
-  base: ComponentConfig<P>,
-  overrides: Partial<P>
-): ComponentConfig<P> {
-  return {
-    ...base,
-    render: (props) => base.render({ ...props, ...overrides }),
-  };
-}
-
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: injectMockApiKey("innjected-api")
+    Mock: Mock("apiKey"),
   },
   root: {
     render: () => {
