@@ -10,7 +10,7 @@ import {
   TemplateConfig,
 } from "@yext/pages";
 import { Render } from "@measured/puck";
-import { mainConfig } from "../ve.config";
+import { repoConfig } from "../ve.config";
 import {
   applyTheme,
   VisualEditorProvider,
@@ -152,7 +152,7 @@ const Repo: Template<TemplateRenderProps> = (props) => {
       currency="USD"
     >
       <VisualEditorProvider templateProps={props}>
-        <Render config={mainConfig} data={JSON.parse(document.__.layout)} />
+        <Render config={repoConfig} data={JSON.parse(document.__.layout)} />
       </VisualEditorProvider>
     </AnalyticsProvider>
   );

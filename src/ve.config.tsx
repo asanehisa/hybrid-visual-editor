@@ -1,4 +1,4 @@
-import { DropZone, type Config } from "@measured/puck";
+import { ComponentConfig, DropZone, type Config } from "@measured/puck";
 import "@yext/visual-editor/style.css";
 import "./index.css";
 import {
@@ -11,6 +11,8 @@ import {
   DirectoryCategoryProps,
   LocatorCategoryComponents,
   LocatorCategoryProps,
+  NearbyLocationsSectionProps,
+  NearbyLocationsSection,
 } from "@yext/visual-editor";
 
 interface MainProps
@@ -85,9 +87,41 @@ export const locatorConfig: Config<LocatorConfigProps> = {
   },
 };
 
+interface MockProps {
+  name: string;
+}
+
+const Mock: ComponentConfig<MockProps> =
+  {
+    label: "Mock",    
+    render: (props) => (
+      <>Mock Hello {props.name}</>
+    ),
+  };
+
+interface RepoProps {
+  Mock: MockProps;
+}
+
+export const repoConfig: Config<RepoProps> = {
+  components: {
+    Mock: {...Mock, defaultProps: {name: "World"}}
+  },
+  root: {
+    render: () => {
+      return (
+        <DropZone
+          zone="default-zone"
+          style={{ display: "flex", flexDirection: "column", height: "100vh" }}
+        />
+      );
+    },
+  }
+}
+
 export const componentRegistry = new Map<string, Config<any>>([
   ["main", mainConfig],
   ["directory", directoryConfig],
   ["locator", locatorConfig],
-  ["repo", mainConfig],
+  ["repo", repoConfig],
 ]);
