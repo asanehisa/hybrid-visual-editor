@@ -96,21 +96,35 @@ const MockHello  = (props: MockProps) => {
   <>Hello world {props.envVar && document?._env?.[props?.envVar]}</>
 )}
 
-const Mock = (envVar?: string): ComponentConfig<MockProps> => (
+const Mock: ComponentConfig<MockProps> = 
 {
   label: "Mock",    
   render: (props) => (
-    <MockHello {...props} envVar={envVar} />
+    <MockHello {...props} />
   ),
-})
+}
 
 interface RepoProps {
   Mock: MockProps;
 }
 
+type ComponentPropOverrides = {
+  Mock: Pick<MockProps, "envVar">;
+};
+
+export function withPropOverrides<K extends keyof ComponentPropOverrides>(
+  base: ComponentConfig<any>,
+  overrides: ComponentPropOverrides[K]
+): ComponentConfig<any> {
+  return {
+    ...base,
+    render: (props) => base.render({ ...props, ...overrides }),
+  };
+}
+
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: Mock('YEXT_PUBLIC_TEST')
+    Mock: withPropOverrides(Mock, {envVar: "YEXT_PUBLIC_TEST"})
   },
   root: {
     render: () => {
