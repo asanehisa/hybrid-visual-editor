@@ -11,8 +11,6 @@ import {
   DirectoryCategoryProps,
   LocatorCategoryComponents,
   LocatorCategoryProps,
-  NearbyLocationsSectionProps,
-  NearbyLocationsSection,
 } from "@yext/visual-editor";
 
 interface MainProps
@@ -105,7 +103,11 @@ interface RepoProps {
 
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: {...Mock, defaultProps: {name: "World"}}
+    Mock: {...Mock, 
+      render: (props) => {
+        props.name = "World";
+        return Mock.render(props)
+      }}
   },
   root: {
     render: () => {
