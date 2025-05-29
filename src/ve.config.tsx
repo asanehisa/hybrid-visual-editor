@@ -86,20 +86,20 @@ export const locatorConfig: Config<LocatorConfigProps> = {
 };
 
 interface MockProps {
-  apiKey: string;
+  envVar?: string;
 }
 
 const MockHello  = (props: MockProps) => (
-  <>Hello world {props.apiKey}</>
+  <>Hello world {props.envVar}</>
 )
 
-const Mock = (apiKey: string): ComponentConfig<MockProps> => (
-  {
-    label: "Mock",    
-    render: (props) => (
-      <MockHello {...props} apiKey={apiKey} />
-    ),
-  })
+const Mock = (envVar?: string): ComponentConfig<MockProps> => (
+{
+  label: "Mock",    
+  render: (props) => (
+    <MockHello {...props} envVar={envVar} />
+  ),
+})
 
 interface RepoProps {
   Mock: MockProps;
@@ -107,7 +107,7 @@ interface RepoProps {
 
 export const repoConfig: Config<RepoProps> = {
   components: {
-    Mock: Mock("apiKey"),
+    Mock: Mock('YEXT_PUBLIC_TEST')
   },
   root: {
     render: () => {
