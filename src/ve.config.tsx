@@ -86,14 +86,14 @@ export const locatorConfig: Config<LocatorConfigProps> = {
 };
 
 interface MockProps {
-  name: string;
+  apiKey: string;
 }
 
 const Mock: ComponentConfig<MockProps> =
   {
     label: "Mock",    
     render: (props) => (
-      <>Mock Hello {props.name}</>
+      <>Mock Hello {props.apiKey}</>
     ),
   };
 
@@ -105,7 +105,7 @@ export const repoConfig: Config<RepoProps> = {
   components: {
     Mock: {...Mock, 
       render: (props) => {
-        props.name = "World";
+        props.apiKey = "apiKey";
         return Mock.render(props)
       }}
   },
