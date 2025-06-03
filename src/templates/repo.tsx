@@ -144,10 +144,10 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 
 const Repo: Template<TemplateRenderProps> = (props) => {
   const { document } = props;
+  console.log(document)
 
   return (
     <AnalyticsProvider
-      enableDebugging={true}
       apiKey={document?._env?.YEXT_PUBLIC_EVENTS_API_KEY}
       templateData={props}
       currency="USD"
