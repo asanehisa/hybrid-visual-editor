@@ -152,7 +152,7 @@ const Repo: Template<TemplateRenderProps> = (props) => {
       templateData={props}
       currency="USD"
     >
-      <AnalyticsScopeProvider name="">
+      <AnalyticsScopeProvider name="repo">
       <VisualEditorProvider templateProps={props}>
         <Render config={mainConfig} data={JSON.parse(document.__.layout)} />
       </VisualEditorProvider>
