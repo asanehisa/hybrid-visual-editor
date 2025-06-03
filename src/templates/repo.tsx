@@ -20,7 +20,7 @@ import {
   applyHeaderScript,
 } from "@yext/visual-editor";
 import { themeConfig } from "../../theme.config";
-import { AnalyticsProvider, SchemaWrapper } from "@yext/pages-components";
+import { AnalyticsProvider, AnalyticsScopeProvider, SchemaWrapper } from "@yext/pages-components";
 
 export const config: TemplateConfig = {
   stream: {
@@ -151,9 +151,11 @@ const Repo: Template<TemplateRenderProps> = (props) => {
       templateData={props}
       currency="USD"
     >
+      <AnalyticsScopeProvider name="">
       <VisualEditorProvider templateProps={props}>
         <Render config={mainConfig} data={JSON.parse(document.__.layout)} />
       </VisualEditorProvider>
+      </AnalyticsScopeProvider>
     </AnalyticsProvider>
   );
 };
