@@ -147,6 +147,7 @@ const Repo: Template<TemplateRenderProps> = (props) => {
 
   return (
     <AnalyticsProvider
+      enableDebugging={true}
       apiKey={document?._env?.YEXT_PUBLIC_EVENTS_API_KEY}
       templateData={props}
       currency="USD"
