@@ -18,7 +18,7 @@ import {
   getPageMetadata,
   applyAnalytics,
   applyHeaderScript,
-  metadata,
+  Metadata,
 } from "@yext/visual-editor";
 import { themeConfig } from "../../theme.config";
 import { AnalyticsProvider, SchemaWrapper } from "@yext/pages-components";
@@ -143,8 +143,20 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return normalizeSlug("repo/" + path);
 };
 
-export const customMetadata: metadata = {
+const resolveUrlTemplate = (
+  streamDocument: any,
+  locale: string,
+  relativePrefixToRoot: string,
+): string => {
+  return (
+    relativePrefixToRoot +
+    normalizeSlug(`custom-url-for-${streamDocument.entityId}-${locale}`)
+  );
+} 
+
+export const customMetadata: Metadata = {
   contentEndpointIdEnvVar: "YEXT_CONTENT_ENDPOINT_ID",
+  resolveUrlTemplate: resolveUrlTemplate
 }
 
 const Repo: Template<TemplateRenderProps> = (props) => {
