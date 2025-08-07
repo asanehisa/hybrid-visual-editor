@@ -143,16 +143,16 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return normalizeSlug("repo/" + path);
 };
 
-const resolveUrlTemplate = (
+function resolveUrlTemplate(
   streamDocument: any,
   locale: string,
   relativePrefixToRoot: string,
-): string => {
+): string {
   return (
     relativePrefixToRoot +
     normalizeSlug(`custom-url-for-${streamDocument.entityId}-${locale}`)
   );
-} 
+}
 
 export const customMetadata: Metadata = {
   contentEndpointIdEnvVar: "YEXT_CONTENT_ENDPOINT_ID",
