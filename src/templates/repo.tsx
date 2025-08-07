@@ -143,7 +143,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return normalizeSlug("repo/" + path);
 };
 
-const customMetadata: metadata = {
+export const customMetadata: metadata = {
   contentEndpointIdEnvVar: "YEXT_CONTENT_ENDPOINT_ID",
 }
 
