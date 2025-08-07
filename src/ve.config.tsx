@@ -13,7 +13,6 @@ import {
   LocatorCategoryProps,
   NearbyLocationsSection,
   NearbyLocationsSectionProps,
-  withPropOverrides,
 } from "@yext/visual-editor";
 
 interface MainProps
@@ -96,7 +95,7 @@ interface RepoProps {
 
 export const repoConfig: Config<RepoProps> = {
   components: {
-    NearbyLocationsSection: withPropOverrides(NearbyLocationsSection, {contentEndpointEnvVar: "YEXT_PUBLIC_TEST"})
+    NearbyLocationsSection: NearbyLocationsSection,
   },
   root: {
     render: () => {

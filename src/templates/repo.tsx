@@ -18,6 +18,7 @@ import {
   getPageMetadata,
   applyAnalytics,
   applyHeaderScript,
+  metadata,
 } from "@yext/visual-editor";
 import { themeConfig } from "../../theme.config";
 import { AnalyticsProvider, SchemaWrapper } from "@yext/pages-components";
@@ -142,6 +143,10 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return normalizeSlug("repo/" + path);
 };
 
+const customMetadata: metadata = {
+  contentEndpointIdEnvVar: "YEXT_CONTENT_ENDPOINT_ID",
+}
+
 const Repo: Template<TemplateRenderProps> = (props) => {
   const { document } = props;
 
@@ -152,7 +157,7 @@ const Repo: Template<TemplateRenderProps> = (props) => {
       currency="USD"
     >
       <VisualEditorProvider templateProps={props}>
-        <Render config={repoConfig} data={JSON.parse(document.__.layout)} />
+        <Render config={repoConfig} data={JSON.parse(document.__.layout)} metadata={customMetadata}/>
       </VisualEditorProvider>
     </AnalyticsProvider>
   );
