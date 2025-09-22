@@ -136,8 +136,8 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 
   const localePath = document.locale !== "en" ? `${document.locale}/` : "";
   const path = document.address
-    ? `${localePath}${document.address.region}/${document.address.city}/${document.address.line1}`
-    : `${localePath}${document.id}`;
+    ? `${localePath}${document.address.region}/${document.address.city}/${document.address.line1}-${document.entityId}`
+    : `${localePath}${document.id}-${document.entityId}`;
 
   return normalizeSlug("repo/" + path);
 };
