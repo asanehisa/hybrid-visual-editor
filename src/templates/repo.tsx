@@ -20,7 +20,7 @@ import {
   applyHeaderScript,
 } from "@yext/visual-editor";
 import { themeConfig } from "../../theme.config";
-import { AnalyticsProvider, AnalyticsScopeProvider, SchemaWrapper } from "@yext/pages-components";
+import { SchemaWrapper } from "@yext/pages-components";
 
 export const config: TemplateConfig = {
   stream: {
