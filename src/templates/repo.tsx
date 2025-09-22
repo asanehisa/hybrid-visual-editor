@@ -147,17 +147,9 @@ const Repo: Template<TemplateRenderProps> = (props) => {
   console.log(document)
 
   return (
-    <AnalyticsProvider
-      apiKey={document?._env?.YEXT_PUBLIC_EVENTS_API_KEY}
-      templateData={props}
-      currency="USD"
-    >
-      <AnalyticsScopeProvider name="repo">
       <VisualEditorProvider templateProps={props}>
         <Render config={mainConfig} data={JSON.parse(document.__.layout)} />
       </VisualEditorProvider>
-      </AnalyticsScopeProvider>
-    </AnalyticsProvider>
   );
 };
 
