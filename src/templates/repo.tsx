@@ -163,15 +163,15 @@ const repo: Template<TemplateRenderProps> = (props) => {
   const { document } = props;
 
   return (
-    <AnalyticsProvider
-      apiKey={document?._env?.YEXT_PUBLIC_EVENTS_API_KEY}
-      templateData={props}
-      currency="USD"
-    >
+    // <AnalyticsProvider
+    //   apiKey={document?._env?.YEXT_PUBLIC_EVENTS_API_KEY}
+    //   templateData={props}
+    //   currency="USD"
+    // >
       <VisualEditorProvider templateProps={props}>
         <Render config={repoConfig} data={JSON.parse(document.__.layout)} metadata={customMetadata}/>
       </VisualEditorProvider>
-    </AnalyticsProvider>
+    // </AnalyticsProvider>
   );
 };
 
