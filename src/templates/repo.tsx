@@ -159,7 +159,7 @@ export const customMetadata: Metadata = {
   resolveUrlTemplate: resolveUrlTemplate
 }
 
-const Repo: Template<TemplateRenderProps> = (props) => {
+const repo: Template<TemplateRenderProps> = (props) => {
   const { document } = props;
 
   return (
@@ -175,4 +175,4 @@ const Repo: Template<TemplateRenderProps> = (props) => {
   );
 };
 
-export default Repo;
+export default repo;
