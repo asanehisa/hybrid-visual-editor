@@ -44,7 +44,7 @@ export const config: TemplateConfig = {
       "hours",
       "slug",
       "geocodedCoordinate",
-      "services",
+      // "services",
       // "c_exampleProducts.image",
       // "c_exampleProducts.name",
       // "c_exampleProducts.products.description.html",
