@@ -43,7 +43,7 @@ export const config: TemplateConfig = {
       "hours",
       "slug",
       "geocodedCoordinate",
-      "services",
+      // "services",
       // "c_exampleProducts.image",
       // "c_exampleProducts.name",
       // "c_exampleProducts.products.description.html",
@@ -142,7 +142,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return normalizeSlug("repo/" + path);
 };
 
-const Repo: Template<TemplateRenderProps> = (props) => {
+const repo: Template<TemplateRenderProps> = (props) => {
   const { document } = props;
   console.log(document)
 
@@ -153,4 +153,4 @@ const Repo: Template<TemplateRenderProps> = (props) => {
   );
 };
 
-export default Repo;
+export default repo;
