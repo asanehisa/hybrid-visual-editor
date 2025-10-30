@@ -38,6 +38,7 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "address",
+      "ref_listings",
       "mainPhone",
       "description",
       "hours",
